@@ -1,0 +1,29 @@
+import jwt from "jsonwebtoken";
+import { reduce } from "lodash";
+
+interface ILoginData {
+    email: string,
+    password: string
+}
+
+export default (user: ILoginData) => {
+    let token = jwt.sign(
+        {
+            data: reduce(
+                user,
+                (result: any, value, key) => {
+                    if(key !== "password"){
+                        result[key] = value;
+                    }
+                    return result;
+                },
+                {}
+            )
+        },
+        process.env.JWT_SECKRET_KEY || "",
+        {
+            expiresIn: 3600*24*7
+        }
+    )
+    return token;
+}
