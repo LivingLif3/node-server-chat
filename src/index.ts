@@ -27,7 +27,7 @@ app.use(cors({
     origin: '*'
 }))
 
-mongoose.connect('mongodb://localhost:27017/test')
+mongoose.connect('mongodb+srv://sasha:sasha1475369@universal-chat.yaeha.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
 
 app.get("/user/me", User.getMe);
 app.get("/user/:id", User.index);
