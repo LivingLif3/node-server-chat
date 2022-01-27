@@ -22,7 +22,7 @@ const Messages = new MessageController(io);
 
 app.use(bodyParser.json());
 app.use(updateLastSeen)
-//app.use(checkAuth)
+app.use(checkAuth)
 app.use(cors({
     origin: '*'
 }))
