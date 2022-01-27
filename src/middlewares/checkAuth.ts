@@ -13,8 +13,8 @@ export default (req: any, res: any, next: any) => {
         .then((user: any) => {
             req.user = user
             next()
-        }).catch(() => {
-            res.status(403).json({ message: "Invalid auth token provided" })
+        }).catch((error: any) => {
+            res.status(403).json({ message: error })
         })
 
        
